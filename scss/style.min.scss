@@ -1,0 +1,511 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap');
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Variables
+# Normalize
+# Typography
+# Form
+# Buttons
+# Header
+# Footer
+# Grid
+# Banner
+# Posts
+# Media Queries
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Variables
+---------------------------------------------------------------*/
+$grey: #333333;
+$grey_light: #e9e9e9;
+$grey_dark: #2b2b2b;
+$red: #e63946;
+
+$padding: 15px;
+
+body{
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+/*--------------------------------------------------------------
+# Normalize
+---------------------------------------------------------------*/
+.flex{
+  display: flex;
+}
+.flex-wrap{
+  @extend .flex;
+  flex-wrap: wrap;
+}
+
+// .container{
+//   max-width: 1300px;
+//   width: 1300px;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+.background{
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+img{width: 100%}
+
+section{margin-bottom: 5%}
+
+
+.btn{
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px
+}
+
+.btn-danger{
+  background-color: $red;
+  border-color: $red;
+}
+
+a, .full-menu{transition: 0.3s ease-in-out}
+
+figure{margin-bottom: 0}
+
+.title-block{
+  margin-bottom: 5%;
+}
+
+/*--------------------------------------------------------------
+# Typography
+---------------------------------------------------------------*/
+h1,h2,h3,h4,h5,h6{font-weight: 700; margin-bottom: 0.67em;}
+
+.date:before, .mileage:before, .speed:before,
+#menu:before, #close:before, #btnSubmitVehicle:after,
+#btnGrid:before, #btnList:before{
+  font-family: 'Font Awesome 5 Free'
+}
+
+.socialMedia a:before{
+  font-family: 'Font Awesome 5 Brands'
+}
+
+/*--------------------------------------------------------------
+# Form
+---------------------------------------------------------------*/
+.form{
+  background-color: $grey_light;
+  padding: 2%;
+  margin-bottom: 2%;
+}
+
+form{
+  .wrapper{
+    margin-bottom: $padding;
+    width: 100%;
+    *{width: 100%;}
+  }
+  select{padding: 5px 5px; border-color: $grey_light;}
+}
+
+.btnRow{
+  text-align: right;
+  *{
+    margin-right: 5px;
+    border: 1px solid $grey_light;
+  }
+  select{
+    text-transform: initial;
+    font-weight: initial;
+    letter-spacing: initial;
+    opacity: 0.8;
+  }
+}
+
+/*--------------------------------------------------------------
+# Buttons
+---------------------------------------------------------------*/
+#menu{
+  display: none;
+  border: 1px solid;
+  background-color: white;
+  border-radius: 5px;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
+  align-self: center;
+  outline: none;
+
+  &:before{
+    content: '\f0c9';
+    font-size: 1.3em;
+    font-weight: 900;
+  }
+}
+
+#close{
+  display: none;
+  position: fixed;
+  right: 0;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  margin-right: $padding;
+  z-index: 2;
+
+  &:before{
+    content: '\f00d';
+    font-weight: 900;
+    font-size: 3em;
+  }
+}
+
+#btnGrid{
+  &:before{
+    content: '\f00a';
+    font-weight: 900;
+  }
+}
+
+#btnList{
+  &:before{
+    content: '\f0c9';
+    font-weight: 900;
+  }
+}
+
+#btn-login,
+#btnsearch{
+  font-weight: initial;
+}
+
+#btn-search{
+  border-left: 1px solid $grey_light;
+  border-right: 1px solid $grey_light;
+  width: 70px;
+  text-align: center
+}
+
+/*--------------------------------------------------------------
+# Header
+---------------------------------------------------------------*/
+header{
+  height: 500px;
+  color: white;
+  h2{font-size: 3em; margin-bottom: $padding}
+  h3{font-weight: 100; opacity: 0.8}
+
+  h2,h3{filter: drop-shadow(2px 4px 6px black);}
+
+  .infoWrapper{height: 451px;}
+  .info{align-self: flex-end;margin: 0 2% 2%}
+}
+.background{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+nav{
+  background-color: $grey;
+  height: 49px;
+
+  div{margin-left: auto}
+
+  a{
+    text-transform: uppercase;
+    padding: $padding;
+    font-weight: 600;
+    color: white;
+    &:hover{
+      text-decoration: none;
+      color: white;
+      border-bottom: 2px solid white;
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# Footer
+---------------------------------------------------------------*/
+footer{
+  color: white;
+  background-color: $grey;
+
+  .footerWrap{padding: 2%;}
+  .footer-bottom{
+    padding: $padding 2%;
+    background-color: $grey-dark;
+    opacity: 0.8;
+  }
+
+  ul{
+    list-style: none;
+    padding: 0 !important;
+    li{
+      margin-bottom: $padding;
+      &:last-of-type{margin-bottom: 0}
+    }
+  }
+
+  .contact{
+    p{
+      margin-bottom: 5px;
+      &:last-of-type{
+        margin-bottom: $padding * 2
+      }
+    }
+  }
+
+  .subscribe{
+    .inputFrame{
+      margin-bottom: 10px;
+      input[type="email"]{
+        border: none;
+        outline: none;
+        width: 100%;
+        text-indent: 5px
+      }
+    }
+  .btn{border-radius: 0 5px 5px 0; outline: none}
+  }
+}
+
+.socialMedia{
+  a{
+    width: 50px;
+    height: 50px;
+    background-color: $grey_dark;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    color: white;
+    margin-right: 5px;
+    &:last-of-type{margin-right: 0}
+    &:hover{
+      background-color: $grey_light;
+      color: $grey_dark;
+      text-decoration: none;
+    }
+  }
+  .fb:before{content: '\f39e';}
+  .tw:before{content: '\f099';}
+  .gp:before{content: '\f0d5';}
+  .ln:before{content: '\f0e1';}
+}
+
+/*--------------------------------------------------------------
+# Grid
+---------------------------------------------------------------*/
+.grid{
+  .cols{
+    padding: 0;
+    margin-bottom: $padding * 2;
+    &:hover{
+      cursor: pointer;
+    }
+  
+    .wrapper{
+      margin: 0 $padding;
+      box-shadow: 2px 2px 5px $grey_light;      
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+
+  figure{
+    height: 260px;
+    p{
+      color: white;
+      align-self: flex-end;
+      margin: $padding;
+      font-size: 1.2em;
+    }
+  }
+
+  article{
+    padding: $padding;
+    opacity: 0.7;
+
+    label{
+      display: block;
+      &:before{margin-right: 10px;}
+    }
+    h3{
+      min-height: 66px;
+      margin-bottom: 5px;
+    }
+    .date:before{
+      content: '\f073';
+    }
+    .mileage:before{
+      content: '\f3fd';
+      font-weight: 900;
+    }
+    .speed:before{
+      content: '\f52f';
+      font-weight: 900;
+
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# List
+---------------------------------------------------------------*/
+.list{
+  .cols{
+    padding: 0;
+    margin-bottom: $padding * 2;
+  
+    .wrapper{
+      display: flex;
+      margin: 0 $padding;
+      box-shadow: 2px 2px 5px $grey_light;      
+      border-radius: 10px;
+      overflow: hidden;
+    }
+  }
+
+  figure{
+    height: 260px;
+    width: 40%;
+    p{
+      color: white;
+      align-self: flex-end;
+      margin: $padding;
+      font-size: 1.2em;
+    }
+  }
+
+  article{
+    width: 60%;
+    padding: $padding;
+    opacity: 0.7;
+
+    label{
+      display: block;
+      &:before{margin-right: 5px;}
+    }
+    .date:before{
+      content: '\f073';
+    }
+    .mileage:before{
+      content: '\f3fd';
+      font-weight: 900;
+    }
+    .speed:before{
+      content: '\f52f';
+      font-weight: 900;
+
+    }
+  }
+}
+
+/*--------------------------------------------------------------
+# Banner
+---------------------------------------------------------------*/
+.stats{
+  background-color: $grey_light;
+  padding: 2% $padding;
+
+  article{
+    text-align: center;
+    h4{font-size: 0.8em; opacity: 0.4}
+  }
+}
+
+/*--------------------------------------------------------------
+# Posts
+---------------------------------------------------------------*/
+.posts{
+  text-align: center;
+
+  p:last-of-type{
+    border-bottom: 2px solid $grey_light;
+    padding-bottom: $padding;
+    margin-bottom: $padding;
+  }
+
+  .authorBlock{
+    display: inline-flex;
+    text-align: center;
+    img, h5{align-self: center}
+    h5{margin: 0 0 0 $padding}
+    figure{
+      width: 50px;
+      height: 50px;
+      overflow: hidden;
+      border-radius: 50%;
+    }
+  }
+
+  .grid{margin-bottom: $padding * 3}
+}
+
+#btnSubmitVehicle{
+  border: 2px solid;
+  &:after{
+    content: '\f061';
+    font-weight: 900;
+    margin-left: 5px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Media Queries
+---------------------------------------------------------------*/
+@media screen and (max-width: 736px){
+  nav{
+    position: fixed;
+    width: 100%;
+    padding: 0 $padding;
+    z-index: 1;
+  }
+  #menu{display: block;}
+  .menu-full{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: $grey_dark;
+    padding: $padding;
+    opacity: 0.99;
+    z-index: 1;
+
+    a{
+      display: block;
+      font-size: 2em;
+      &:hover{border-bottom: none;}
+    }
+  }
+
+  #btn-login,
+  #btnsearch{
+    font-weight: initial;
+  }
+
+  #btn-search{
+    border: 0;
+    width: initial;
+    text-align: initial
+  }
+
+  .list figure{height: initial}
+
+
+  .form, .stats,
+  footer .footerWrap,
+  footer .footer-bottom{padding: $padding}
+
+  .btnRow{text-align: center}
+
+  .posts{
+    margin-bottom: $padding * 3;
+    .grid{margin-bottom: 0;}
+  }
+}
