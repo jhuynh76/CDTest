@@ -3,15 +3,17 @@ vue = new Vue({
 	data:{
 		txtEmail: '',
 		dropdownMake: [
-			{value: 'default', name: 'Select Make'},
-			{value: 'v1', name: 'BMW'},
-			{value: 'v2', name: 'Mercedez Benz'},
-			{value: 'v3', name: 'Honda'},
-			{value: 'v4', name: 'Toyota'},
+			{value: 'default', name: '--Select Make--'},
+			{value: 'audi', name: 'Audi'},
+			{value: 'infinity', name: 'Infinity'},
+			{value: 'mercedes-benz', name: 'Mercedes Benz'},
+			{value: 'subaru', name: 'Subaru'},
+			{value: 'volkswagen', name: 'Volkswagen'},
+			{value: 'volvo', name: 'Volvo'},
 		],
 
 		dropdownModel: [
-			{value: 'default', name: 'Select Make first'},
+			{value: 'default', name: '--Select model--'},
 			{value: 'v1', name: 'M3'},
 			{value: 'v2', name: 'WRX STi'},
 			{value: 'v3', name: 'Class S AMG'},
@@ -20,25 +22,25 @@ vue = new Vue({
 		],
 
 		dropdownMileage: [
-			{value: 'default', name: 'Max Mileage'},
-			{value: 'v1', name: '0 miles'},
-			{value: 'v2', name: '10,000 miles'},
-			{value: 'v3', name: '20,000 miles'},
-			{value: 'v4', name: '30,000 miles'},
-			{value: 'v5', name: '50,000 miles'},		
-			{value: 'v6', name: '60,000 miles'},		
-			{value: 'v7', name: '70,000+ miles'},		
+			{value: 'default', name: '--Select max mileage--'},
+			{value: '0', name: '0'},
+			{value: '10000', name: '10,000'},
+			{value: '20000', name: '20,000'},
+			{value: '30000', name: '30,000'},
+			{value: '40000', name: '40,000'},		
+			{value: '60000', name: '60,000'},		
+			{value: '100000', name: '100,000'},		
 		],
 
 		dropdownPrice: [
-			{value: 'default', name: 'Max Price'},
-			{value: 'v1', name: '$5,000'},
-			{value: 'v2', name: '$10,000'},
-			{value: 'v3', name: '$15,000'},
-			{value: 'v4', name: '$25,000'},
-			{value: 'v5', name: '$35,000'},		
-			{value: 'v5', name: '$45,000'},		
-			{value: 'v5', name: '$60,000'},		
+			{value: 'default', name: '--Select max price--'},
+			{value: '5000', name: '$5,000'},
+			{value: '10000', name: '$10,000'},
+			{value: '20000', name: '$20,000'},
+			{value: '30000', name: '$30,000'},
+			{value: '40000', name: '$40,000'},		
+			{value: '60000', name: '$60,000'},		
+			{value: '100000', name: '$100,000'},		
 		],
 
 		dropdownFilter: [
@@ -62,7 +64,15 @@ vue = new Vue({
 	}
 });
 
-
+/*--------------------------------------------------------------
+>>> TABLE OF CONTENTS:
+----------------------------------------------------------------
+# Buttons
+# Products Grid filter
+--------------------------------------------------------------*/
+/*--------------------------------------------------------------
+# Buttons
+---------------------------------------------------------------*/
 $('#menu').click(function(){
 	$('#close').show();
 	$('.menu-full').show();
@@ -102,8 +112,17 @@ $('#dropdownFiler').change(function(){
 	});
 });
 
+
+/*--------------------------------------------------------------
+# Product Grid filter (for header function)
+---------------------------------------------------------------*/
+$(document).ready(function(){
+	// $('#productGrid .cols').hide();
+});
+
 $('#productGrid .cols').each(function(){
-	var name = $(this).data('name');
+	var make = $(this).data('make');
+	var model = $(this).data('model');
 	var bg = $(this).data('img');
 	var price = $(this).data('price');
 	var date = $(this).data('date');
@@ -112,8 +131,71 @@ $('#productGrid .cols').each(function(){
 	
 	$(this).click(function(){
 		$('header').css( "background-image", "url('" + bg + "')" );
-		$('header .info h2').text(name);
-		$('header .info h3').text(price + ' • ' + date + ' • ' + miles + ' • ' + speed);
+		$('header .info h2').text(make + ' ' + model);
+		$('header .info h3').text('$' + price.toLocaleString('en') + ' • ' + date + ' • ' + miles.toLocaleString('en') + ' miles • ' + speed + ' kw (' + Math.round(speed * 1.34) + ') hp');
 	});
 
+});
+
+/*--------------------------------------------------------------
+# Make filter
+---------------------------------------------------------------*/
+$('#make').change(function(){
+	$('#make option:selected').each(function(){
+		var makeFilter = $(this).val();
+
+		$('#productGrid .cols').each(function(){
+			var make = $(this).data('make');
+
+			if (make == makeFilter){
+				$(this).show();
+			}
+			else{
+				$(this).hide();
+			}
+
+		});
+	});
+});
+
+/*--------------------------------------------------------------
+## Price filter
+---------------------------------------------------------------*/
+$('#price').change(function(){
+	$('#price option:selected').each(function(){
+		var priceFilter = $(this).val();
+
+		$('#productGrid .cols').each(function(){
+			var price = $(this).data('price');
+
+			if (price <= priceFilter){
+				$(this).show();
+			}
+			else{
+				$(this).hide();
+			}
+
+		});
+	});
+});
+
+/*--------------------------------------------------------------
+# Mileage filter
+---------------------------------------------------------------*/
+$('#mileage').change(function(){
+	$('#mileage option:selected').each(function(){
+		var milesFilter = $(this).val();
+
+		$('#productGrid .cols').each(function(){
+			var miles = $(this).data('miles');
+
+			if (miles <= milesFilter){
+				$(this).show();
+			}
+			else{
+				$(this).hide();
+			}
+
+		});
+	});
 });

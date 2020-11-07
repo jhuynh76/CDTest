@@ -51,9 +51,7 @@
 			</div>
 
 			<div class="wrapper col-lg-6 col-md-6">
-				<select name="registration">
-					<option>First Registration</option>
-				</select>
+				<input type="date" name="date" placeholder="First date of registration" />
 			</div>
 
 			<div class="wrapper col-lg-6 col-md-6">
@@ -88,8 +86,9 @@
 	<!-- ============================ -->
 	<section id="productGrid" class="grid flex-wrap container container-lg container-md container-sm">
 		<!-- Car 1 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-name="Volkswagen Golf 2.5l" data-img="images/car.jpg" data-miles="30000" data-price="22000" data-speed="130" data-date="07-2015">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="volkswagen" data-model="Golf 2.5l" data-img="images/car.jpg" data-miles="30000" data-price="22000" data-speed="130" data-date="07-2015">
 			<div class="wrapper">
+				<span class="sold">Sold</span>
 				<figure class="background flex" style="background-image: url('images/car.jpg')">
 					<p>$22,000</p>
 				</figure>
@@ -103,7 +102,7 @@
 		</div>
 
 		<!-- Car 2 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-name="Subaru WRX" data-img="images/sti.jpg" data-miles="10000" data-price="28500" data-speed="250" data-date="07-2015">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="subaru" data-model="WRX" data-img="images/sti.jpg" data-miles="10000" data-price="28500" data-speed="250" data-date="07-2015">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/sti.jpg')">
 					<p>$28,500</p>
@@ -118,8 +117,9 @@
 		</div>
 
 		<!-- Car 3 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-name="Infinity Q50" data-img="images/infinity.jpg" data-miles="0" data-price="35000" data-speed="190" data-date="05-2016">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="infinity" data-model="Q50" data-img="images/infinity.jpg" data-miles="0" data-price="35000" data-speed="190" data-date="05-2016">
 			<div class="wrapper">
+				<span class="sold">Sold</span>
 				<figure class="background flex" style="background-image: url('images/infinity.jpg')">
 					<p>$35,000</p>
 				</figure>
@@ -133,7 +133,7 @@
 		</div>
 
 		<!-- Car 4 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-name="Mercedes Benz ML (AWD)" data-img="images/benz.jpg" data-miles="75000" data-price="36000" data-speed="210" data-date="09-2014">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="mercedes-benz" data-model="ML (AWD)" data-img="images/benz.jpg" data-miles="75000" data-price="36000" data-speed="210" data-date="09-2014">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/benz.jpg')">
 					<p>$36,000</p>
@@ -148,7 +148,7 @@
 		</div>
 
 		<!-- Car 5 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-name="Volvo V40 Cross Country" data-img="images/volvo.jpg" data-miles="0" data-price="42000" data-speed="110" data-date="05-2016">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="volvo" data-model="V40 Cross Country" data-img="images/volvo.jpg" data-miles="0" data-price="42000" data-speed="110" data-date="05-2016">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/volvo.jpg')">
 					<p>$42,000</p>
@@ -163,7 +163,7 @@
 		</div>
 
 		<!-- Car 6 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-name="Audi TT RS" data-img="images/audi.jpg" data-miles="10000" data-price="45000" data-speed="185" data-date="03-2016">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="TT RS" data-img="images/audi.jpg" data-miles="10000" data-price="45000" data-speed="185" data-date="03-2016">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/audi.jpg')">
 					<p>$45,000</p>
@@ -176,6 +176,21 @@
 				</article>
 			</div>
 		</div>
+
+		<!-- Car 7 -->
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="R8" data-img="images/audi-r8.jpg" data-miles="50000" data-price="70000" data-speed="449" data-date="03-2018">
+			<div class="wrapper">
+				<figure class="background flex" style="background-image: url('images/audi-r8.jpg')">
+					<p>$70,000</p>
+				</figure>
+				<article>
+					<h3>Audi R8</h3>
+					<label class="date" data-date="">03-2018</label>
+					<label class="mileage" data-miles="">5,000 miles</label>
+					<label class="speed" data-speed="">449 kw (602 hp)</label>
+				</article>
+			</div>
+		</div>		
 	</section>
 
 	<!-- ============================ -->

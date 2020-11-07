@@ -9,7 +9,9 @@
 # Buttons
 # Header
 # Footer
-# Grid
+# Products
+  ## Grid
+  ## List
 # Banner
 # Posts
 # Media Queries
@@ -297,7 +299,25 @@ footer{
 }
 
 /*--------------------------------------------------------------
-# Grid
+# Products
+---------------------------------------------------------------*/
+.sold{
+    background-color: #e63946;
+    padding: 5px;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 0;
+    top: 0;
+    display: flex;
+    margin: 10px 0 0 -84px;
+    opacity: 0.9;
+    color: #fff;
+    padding: 5px 100px;
+}
+
+#productGrid .cols{display: none}
+/*--------------------------------------------------------------
+## Grid
 ---------------------------------------------------------------*/
 .grid{
   .cols{
@@ -312,6 +332,7 @@ footer{
       box-shadow: 2px 2px 5px $grey_light;      
       border-radius: 10px;
       overflow: hidden;
+      position: relative;
     }
   }
 
@@ -353,7 +374,7 @@ footer{
 }
 
 /*--------------------------------------------------------------
-# List
+## List
 ---------------------------------------------------------------*/
 .list{
   .cols{
@@ -366,6 +387,7 @@ footer{
       box-shadow: 2px 2px 5px $grey_light;      
       border-radius: 10px;
       overflow: hidden;
+      position: relative;
     }
   }
 
@@ -495,6 +517,7 @@ footer{
     text-align: initial
   }
 
+  .grid article h3{min-height: initial; margin-bottom: 0.67em;}
   .list figure{height: initial}
 
 
@@ -507,5 +530,12 @@ footer{
   .posts{
     margin-bottom: $padding * 3;
     .grid{margin-bottom: 0;}
+  }
+
+  footer{
+    .contact p:last-of-type,
+    .contact, .hours{
+      margin-bottom: $padding
+    }
   }
 }
