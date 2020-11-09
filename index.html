@@ -11,7 +11,7 @@
 	<main id="vueApp">
 	<header class="background" style="background-image: url('images/heroImg.jpg')">
 		<nav class="flex">
-			<h1>TEST</h1>
+			<h1><a href="">TEST</a></h1>
 			<button id="menu"></button>
 			<button id="close"></button>
 			<div class="menu-full flex">
@@ -66,12 +66,16 @@
 				</select>
 			</div>
 
-			<div class="wrapper col-lg-6 col-md-6">
-				<button class="btn btn-danger">Show Results</button>
+			<!-- button group -->
+			<div class="btn-group wrapper col-lg-6 col-md-6" role="group" aria-label="btnGroup">
+				<button id="btnSubmit" class="btn btn-danger">Show Results</button>
+				<button id="btnAll" class="btn btn-light">Show All</button>
+				<button id="btnReset" class="btn btn-light">Reset</button>
 			</div>
 		</form>
 	</section>
 
+	<!-- Grid/List/Sort -->
 	<section class="btnRow container">
 		<button id="btnGrid" class="btn btn-light"></button>
 		<button id="btnList" class="btn btn-light"></button>
@@ -79,7 +83,6 @@
 			<option v-for="sort in dropdownSort" :value="sort.value">{{sort.name}}</option>
 		</select>
 	</section>
-
 
 	<!-- ============================ -->
 	<!-- C A R S (GRID) -->
@@ -178,7 +181,7 @@
 		</div>
 
 		<!-- Car 7 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="R8" data-img="images/audi-r8.jpg" data-miles="50000" data-price="70000" data-speed="449" data-date="03-2018" data-num="7">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="R8" data-img="images/audi-r8.jpg" data-miles="5000" data-price="70000" data-speed="449" data-date="03-2018" data-num="7">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/audi-r8.jpg')">
 					<p>$70,000</p>
@@ -202,7 +205,7 @@
 	<!-- ============================ -->
 	<!-- B A N N E R -->
 	<!-- ============================ -->
-	<section class="stats flex-wrap">
+	<section class="banner flex-wrap">
 		<article class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 			<h3>25</h3>
 			<h4>Years in Business</h4>

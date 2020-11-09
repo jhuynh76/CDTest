@@ -62,7 +62,7 @@ section{margin-bottom: 5%}
 .btn{
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px
+  letter-spacing: 1px
 }
 
 .btn-danger{
@@ -116,7 +116,7 @@ form{
 .btnRow{
   text-align: right;
   margin-bottom: $padding * 2;
-  
+
   *{
     margin-right: 5px;
     border: 1px solid $grey_light;
@@ -217,16 +217,39 @@ form{
   color: $grey_light;
 }
 
+form .btn{
+  outline: none;
+  font-size: 0.8em;
+}
+
 /*--------------------------------------------------------------
 # Header
 ---------------------------------------------------------------*/
 header{
   height: 500px;
   color: white;
-  h2{font-size: 3em; margin-bottom: $padding}
-  h3{font-weight: 100; opacity: 0.8}
+  h1{
+    font-size: 2em;
+    align-self: center;
+    margin-bottom: 0;
+    margin-left: $padding;
+    a{
+      padding: 0;
+      &:hover{border-bottom: 0}
+    }
 
-  h2,h3{filter: drop-shadow(2px 4px 6px black);}
+  }
+  h2{
+    font-size: 3em;
+    margin-bottom: $padding;
+    text-transform: capitalize;
+    filter: drop-shadow(2px 4px 6px black);
+  }
+  h3{
+    font-weight: 100;
+    opacity: 0.8;
+    filter: drop-shadow(2px 4px 6px black);
+  }
 
   .infoWrapper{height: 451px;}
   .info{align-self: flex-end;margin: 0 2% 2%}
@@ -344,7 +367,10 @@ footer{
 
 #productGrid{
   margin-bottom: $padding * 2;
-  .cols{display: none}
+  .cols{
+    display: none;
+    &:hover{cursor: pointer;}
+  }
 }
 
 /*--------------------------------------------------------------
@@ -354,9 +380,6 @@ footer{
   .cols{
     padding: 0;
     margin-bottom: $padding * 2;
-    &:hover{
-      cursor: pointer;
-    }
   
     .wrapper{
       margin: 0 $padding;
@@ -460,9 +483,9 @@ footer{
 /*--------------------------------------------------------------
 # Banner
 ---------------------------------------------------------------*/
-.stats{
+.banner{
   background-color: $grey_light;
-  padding: 2% $padding;
+  padding: 5% $padding;
 
   article{
     text-align: center;
@@ -511,6 +534,11 @@ footer{
 # Media Queries
 ---------------------------------------------------------------*/
 @media screen and (max-width: 736px){
+  header{
+    h2{font-size: 2em;}
+    h3{font-size: 1.3em}
+    .infoWrapper{height: 500px;}
+  }
   nav{
     position: fixed;
     width: 100%;
@@ -552,7 +580,7 @@ footer{
   .list figure{height: initial}
 
 
-  .form, .stats,
+  .form, .banner,
   footer .footerWrap,
   footer .footer-bottom{padding: $padding}
 
