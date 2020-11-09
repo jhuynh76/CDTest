@@ -4,7 +4,7 @@
 	<title>Test</title>
 	<meta content="width=device-width, initial-scale=1" name="viewport" charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="fonts/all.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/css/all.min.css">
 	<link rel="stylesheet" type="text/css" href="css/style.min.css">
 </head>
 <body>
@@ -75,8 +75,8 @@
 	<section class="btnRow container">
 		<button id="btnGrid" class="btn btn-light"></button>
 		<button id="btnList" class="btn btn-light"></button>
-		<select id="dropdownFiler" class="btn btn-light">
-			<option v-for="filter in dropdownFilter" :value="filter.value">{{filter.name}}</option>
+		<select id="dropdownSort" class="btn btn-light">
+			<option v-for="sort in dropdownSort" :value="sort.value">{{sort.name}}</option>
 		</select>
 	</section>
 
@@ -86,7 +86,7 @@
 	<!-- ============================ -->
 	<section id="productGrid" class="grid flex-wrap container container-lg container-md container-sm">
 		<!-- Car 1 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="volkswagen" data-model="Golf 2.5l" data-img="images/car.jpg" data-miles="30000" data-price="22000" data-speed="130" data-date="07-2015">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="volkswagen" data-model="Golf 2.5l" data-img="images/car.jpg" data-miles="30000" data-price="22000" data-speed="130" data-date="07-2015" data-num="1">
 			<div class="wrapper">
 				<span class="sold">Sold</span>
 				<figure class="background flex" style="background-image: url('images/car.jpg')">
@@ -102,7 +102,7 @@
 		</div>
 
 		<!-- Car 2 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="subaru" data-model="WRX" data-img="images/sti.jpg" data-miles="10000" data-price="28500" data-speed="250" data-date="07-2015">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="subaru" data-model="WRX" data-img="images/sti.jpg" data-miles="10000" data-price="28500" data-speed="250" data-date="07-2015" data-num="2">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/sti.jpg')">
 					<p>$28,500</p>
@@ -117,7 +117,7 @@
 		</div>
 
 		<!-- Car 3 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="infinity" data-model="Q50" data-img="images/infinity.jpg" data-miles="0" data-price="35000" data-speed="190" data-date="05-2016">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="infinity" data-model="Q50" data-img="images/infinity.jpg" data-miles="0" data-price="35000" data-speed="190" data-date="05-2016" data-num="3">
 			<div class="wrapper">
 				<span class="sold">Sold</span>
 				<figure class="background flex" style="background-image: url('images/infinity.jpg')">
@@ -133,7 +133,7 @@
 		</div>
 
 		<!-- Car 4 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="mercedes-benz" data-model="ML (AWD)" data-img="images/benz.jpg" data-miles="75000" data-price="36000" data-speed="210" data-date="09-2014">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="mercedes-benz" data-model="ML (AWD)" data-img="images/benz.jpg" data-miles="75000" data-price="36000" data-speed="210" data-date="09-2014" data-num="4">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/benz.jpg')">
 					<p>$36,000</p>
@@ -148,7 +148,7 @@
 		</div>
 
 		<!-- Car 5 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="volvo" data-model="V40 Cross Country" data-img="images/volvo.jpg" data-miles="0" data-price="42000" data-speed="110" data-date="05-2016">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="volvo" data-model="V40 Cross Country" data-img="images/volvo.jpg" data-miles="0" data-price="42000" data-speed="110" data-date="05-2016" data-num="5">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/volvo.jpg')">
 					<p>$42,000</p>
@@ -163,7 +163,7 @@
 		</div>
 
 		<!-- Car 6 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="TT RS" data-img="images/audi.jpg" data-miles="10000" data-price="45000" data-speed="185" data-date="03-2016">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="TT RS" data-img="images/audi.jpg" data-miles="10000" data-price="45000" data-speed="185" data-date="03-2016" data-num="6">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/audi.jpg')">
 					<p>$45,000</p>
@@ -178,7 +178,7 @@
 		</div>
 
 		<!-- Car 7 -->
-		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="R8" data-img="images/audi-r8.jpg" data-miles="50000" data-price="70000" data-speed="449" data-date="03-2018">
+		<div class="cols col-lg-4 col-md-6 col-sm-12 col-xs-12" data-make="audi" data-model="R8" data-img="images/audi-r8.jpg" data-miles="50000" data-price="70000" data-speed="449" data-date="03-2018" data-num="7">
 			<div class="wrapper">
 				<figure class="background flex" style="background-image: url('images/audi-r8.jpg')">
 					<p>$70,000</p>
@@ -192,6 +192,12 @@
 			</div>
 		</div>		
 	</section>
+
+	<div class="paginationRow">
+		<button id="btnPrevious" class="btn btn-light" disabled></button>
+		<!-- <button class="btn btn-light">1</button> -->
+		<button id="btnNext" class="btn btn-light"></button>
+	</div>
 
 	<!-- ============================ -->
 	<!-- B A N N E R -->

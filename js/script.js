@@ -43,7 +43,7 @@ vue = new Vue({
 			{value: '100000', name: '$100,000'},		
 		],
 
-		dropdownFilter: [
+		dropdownSort: [
 			{value: 'default', name: 'Sort by'},
 			{value: 'v1', name: 'Price (low - high)'},
 			{value: 'v2', name: 'Price (High - low)'},
@@ -68,134 +68,219 @@ vue = new Vue({
 >>> TABLE OF CONTENTS:
 ----------------------------------------------------------------
 # Buttons
-# Products Grid filter
---------------------------------------------------------------*/
-/*--------------------------------------------------------------
-# Buttons
----------------------------------------------------------------*/
-$('#menu').click(function(){
-	$('#close').show();
-	$('.menu-full').show();
-});
-
-$('#close').click(function(){
-	$(this).hide();
-	$('.menu-full').hide();
-});
-
-$('#btnList').click(function(){
-	$('#productGrid').removeClass('grid');
-	$('#productGrid').addClass('list');
-
-	$('#productGrid .cols').removeClass('col-lg-4 col-md-6');
-	$('#productGrid .cols').addClass('col-lg-12 col-md-12');
-});
-
-$('#btnGrid').click(function(){
-	$('#productGrid').addClass('grid');
-	$('#productGrid').removeClass('list');
-
-	$('#productGrid .cols').removeClass('col-lg-12 col-md-12');	
-	$('#productGrid .cols').addClass('col-lg-4 col-md-6');
-});
-
-$('#dropdownFiler').change(function(){
-	$('#dropdownFiler option:selected').each(function(){
-		var getVal = $(this).val();
-		
-		if (getVal == 'v1'){
-			alert('aa');
-		}
-		else if (getVal == 'v2'){
-			alert('bbbb');
-		}
-	});
-});
-
-
-/*--------------------------------------------------------------
+# Pagination (next and prev buttons)
+	## Next
+	## Prev
 # Product Grid filter (for header function)
----------------------------------------------------------------*/
-$(document).ready(function(){
-	// $('#productGrid .cols').hide();
-});
-
-$('#productGrid .cols').each(function(){
-	var make = $(this).data('make');
-	var model = $(this).data('model');
-	var bg = $(this).data('img');
-	var price = $(this).data('price');
-	var date = $(this).data('date');
-	var miles = $(this).data('miles');
-	var speed = $(this).data('speed');
-	
-	$(this).click(function(){
-		$('header').css( "background-image", "url('" + bg + "')" );
-		$('header .info h2').text(make + ' ' + model);
-		$('header .info h3').text('$' + price.toLocaleString('en') + ' • ' + date + ' • ' + miles.toLocaleString('en') + ' miles • ' + speed + ' kw (' + Math.round(speed * 1.34) + ') hp');
-	});
-
-});
-
-/*--------------------------------------------------------------
 # Make filter
----------------------------------------------------------------*/
-$('#make').change(function(){
-	$('#make option:selected').each(function(){
-		var makeFilter = $(this).val();
-
-		$('#productGrid .cols').each(function(){
-			var make = $(this).data('make');
-
-			if (make == makeFilter){
-				$(this).show();
-			}
-			else{
-				$(this).hide();
-			}
-
-		});
-	});
-});
-
-/*--------------------------------------------------------------
-## Price filter
----------------------------------------------------------------*/
-$('#price').change(function(){
-	$('#price option:selected').each(function(){
-		var priceFilter = $(this).val();
-
-		$('#productGrid .cols').each(function(){
-			var price = $(this).data('price');
-
-			if (price <= priceFilter){
-				$(this).show();
-			}
-			else{
-				$(this).hide();
-			}
-
-		});
-	});
-});
-
-/*--------------------------------------------------------------
+# Price filter
 # Mileage filter
----------------------------------------------------------------*/
-$('#mileage').change(function(){
-	$('#mileage option:selected').each(function(){
-		var milesFilter = $(this).val();
+--------------------------------------------------------------*/
+$(document).ready(function(){
+	var numTotal = 2;
+	var num = 3	
 
-		$('#productGrid .cols').each(function(){
-			var miles = $(this).data('miles');
+	/*--------------------------------------------------------------
+	# Buttons
+	---------------------------------------------------------------*/
+	$('#menu').click(function(){
+		$('#close').show();
+		$('.menu-full').show();
+	});
 
-			if (miles <= milesFilter){
-				$(this).show();
+	$('#close').click(function(){
+		$(this).hide();
+		$('.menu-full').hide();
+	});
+
+	$('#btnList').click(function(){
+		$('#productGrid').removeClass('grid');
+		$('#productGrid').addClass('list');
+
+		$('#productGrid .cols').removeClass('col-lg-4 col-md-6');
+		$('#productGrid .cols').addClass('col-lg-12 col-md-12');
+	});
+
+	$('#btnGrid').click(function(){
+		$('#productGrid').addClass('grid');
+		$('#productGrid').removeClass('list');
+
+		$('#productGrid .cols').removeClass('col-lg-12 col-md-12');	
+		$('#productGrid .cols').addClass('col-lg-4 col-md-6');
+	});
+
+	$('#dropdownFiler').change(function(){
+		$('#dropdownFiler option:selected').each(function(){
+			var getVal = $(this).val();
+			
+			if (getVal == 'v1'){
+				alert('aa');
 			}
-			else{
-				$(this).hide();
+			else if (getVal == 'v2'){
+				alert('bbbb');
 			}
-
 		});
 	});
-});
+
+	/*--------------------------------------------------------------
+	# Pagination (next and prev buttons)
+	---------------------------------------------------------------*/
+	// pagination method
+	function paginationCond(){
+		// cond for previous btn to disable to prevent negative val
+		if (numTotal <= 2){
+			$('#btnPrevious').attr('disabled', 'disabled');
+		}
+		else{
+			$('#btnPrevious').removeAttr('disabled', 'disabled');			
+		}
+
+		// cond for next btn to disable to keep it within limit
+		if (numTotal >= 8){
+			$('#btnNext').attr('disabled', 'disabled');
+		}
+		else{
+			$('#btnNext').removeAttr('disabled', 'disabled');			
+		}
+	}
+
+	$('#productGrid .cols').each(function(){
+		var numData = $(this).data('num');
+
+		if (numData < numTotal){
+			$(this).show();
+		}
+	});
+
+	/*--------------------------------------------------------------
+	## Next
+	---------------------------------------------------------------*/
+	$('#btnNext').click(function(){
+		numTotal += num;		
+		paginationCond();
+
+		$('#productGrid .cols').hide();
+
+		$('#productGrid .cols').each(function(){
+			var numData = $(this).data('num');
+
+			if (numData < numTotal){
+				$(this).show();
+			}
+		});
+	});
+
+	/*--------------------------------------------------------------
+	## Prev
+	---------------------------------------------------------------*/
+	$('#btnPrevious').click(function(){
+		numTotal -= num;
+		paginationCond();
+
+		$('#productGrid .cols').hide();
+
+		$('#productGrid .cols').each(function(){
+			var numData = $(this).data('num');
+
+			if (numData < numTotal){
+				$(this).show();
+			}
+		});
+	});
+
+	/*--------------------------------------------------------------
+	# Product Grid filter (for header function)
+	---------------------------------------------------------------*/
+	$('#productGrid .cols').each(function(){
+		var make = $(this).data('make');
+		var model = $(this).data('model');
+		var bg = $(this).data('img');
+		var price = $(this).data('price');
+		var date = $(this).data('date');
+		var miles = $(this).data('miles');
+		var speed = $(this).data('speed');
+		
+		$(this).click(function(){
+			$('header').css( "background-image", "url('" + bg + "')" );
+			$('header .info h2').text(make + ' ' + model);
+			$('header .info h3').text('$' + price.toLocaleString('en') + ' • ' + date + ' • ' + miles.toLocaleString('en') + ' miles • ' + speed + ' kw (' + Math.round(speed * 1.34) + ') hp');
+		});
+
+	});
+
+	/*--------------------------------------------------------------
+	# Make filter
+	---------------------------------------------------------------*/
+	$('#make').change(function(){
+		numTotal = 2;
+		paginationCond();
+
+		$('#make option:selected').each(function(){
+			var makeFilter = $(this).val();
+
+			$('#productGrid .cols').each(function(){
+				var make = $(this).data('make');
+
+				if (make == makeFilter){
+					$(this).show();
+				}
+				else{
+					$(this).hide();
+				}
+
+			});
+		});
+	});
+
+	/*--------------------------------------------------------------
+	## Price filter
+	---------------------------------------------------------------*/
+	$('#price').change(function(){
+		numTotal = 2;
+		paginationCond();
+
+		$('#price option:selected').each(function(){
+			var priceFilter = $(this).val();
+
+			$('#productGrid .cols').each(function(){
+				var price = $(this).data('price');
+
+				if (price <= priceFilter){
+					$(this).show();
+				}
+				else{
+					$(this).hide();
+				}
+
+			});
+		});
+	});
+
+	/*--------------------------------------------------------------
+	# Mileage filter
+	---------------------------------------------------------------*/
+	$('#mileage').change(function(){
+		numTotal = 2;
+		paginationCond();
+
+		$('#mileage option:selected').each(function(){
+			var milesFilter = $(this).val();
+
+			$('#productGrid .cols').each(function(){
+				var miles = $(this).data('miles');
+
+				if (miles <= milesFilter){
+					$(this).show();
+				}
+				else{
+					$(this).hide();
+				}
+
+			});
+		});
+	});
+
+
+
+
+}); //end doc.rdy.function

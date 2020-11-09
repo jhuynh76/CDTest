@@ -85,7 +85,9 @@ h1,h2,h3,h4,h5,h6{font-weight: 700; margin-bottom: 0.67em;}
 
 .date:before, .mileage:before, .speed:before,
 #menu:before, #close:before, #btnSubmitVehicle:after,
-#btnGrid:before, #btnList:before{
+#btnGrid:before, #btnList:before
+// #btnNext:before, #btnPrevious:before
+{
   font-family: 'Font Awesome 5 Free'
 }
 
@@ -113,6 +115,8 @@ form{
 
 .btnRow{
   text-align: right;
+  margin-bottom: $padding * 2;
+  
   *{
     margin-right: 5px;
     border: 1px solid $grey_light;
@@ -188,6 +192,29 @@ form{
   border-right: 1px solid $grey_light;
   width: 70px;
   text-align: center
+}
+
+.paginationRow{
+  text-align: center;
+  margin-bottom: 5%;
+  button{
+   opacity: 0.7;
+  }
+}
+
+#btnPrevious:before{
+  // content: '\f060';
+  content: 'Show Less';
+  font-weight: 900;
+}
+#btnNext:before{
+  // content: '\f061';
+  content: 'Show More';
+  font-weight: 900;
+}
+
+.btn:disabled{
+  color: $grey_light;
 }
 
 /*--------------------------------------------------------------
@@ -315,7 +342,11 @@ footer{
     padding: 5px 100px;
 }
 
-#productGrid .cols{display: none}
+#productGrid{
+  margin-bottom: $padding * 2;
+  .cols{display: none}
+}
+
 /*--------------------------------------------------------------
 ## Grid
 ---------------------------------------------------------------*/
